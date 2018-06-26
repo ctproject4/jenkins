@@ -21,7 +21,12 @@ pipeline {
 		  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
             }
 	}
-     
+	    stage('SonarQube') {
+		def mvnHome = tool name: 'maven-3', type: 'maven'
+		    withSonarQubeEnv('sonar') {
+			    sh "${mvnHome}/bin/mvn sonar:sonar"
+		    }
+	    }
 	 stage('Deploy') {
             steps {
                 echo 'Deploying....'
