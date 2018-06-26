@@ -24,7 +24,7 @@ pipeline {
 	   stage ('SonarQube Analysis'){
 		steps{
 			dir("project_templates/java_project_template"){
-				withSonarQubeEnv('SonarQube5.3') {
+				withSonarQubeEnv('sonar') {
 				sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
 				}
 			}
