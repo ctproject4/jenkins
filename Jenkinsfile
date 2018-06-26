@@ -22,9 +22,11 @@ pipeline {
             }
 	}
 	    stage('SonarQube') {
-		def mvnHome = tool name: 'maven-3', type: 'maven'
+		    steps {
+			    def mvnHome = tool name: 'maven-3', type: 'maven'
 		    withSonarQubeEnv('sonar') {
 			    sh "${mvnHome}/bin/mvn sonar:sonar"
+		    }
 		    }
 	    }
 	 stage('Deploy') {
