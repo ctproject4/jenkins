@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
 		sh 'cd /var/lib/jenkins/workspace/pipe/target/'
-		sh 'scp -i /home/centos/tomcat.pem SpringWebApp.war centos@35.154.247.29://var/lib/tomcat/webapps'
+		sh 'scp -i /home/centos/tomcat.pem SpringWebApp.war centos@35.154.247.29:/var/lib/tomcat/webapps'
             }
         }
     }
